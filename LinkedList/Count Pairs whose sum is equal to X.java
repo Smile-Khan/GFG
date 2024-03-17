@@ -1,0 +1,97 @@
+package LinkedList;
+
+public class Count Pairs whose sum is equal to X {
+ 
+    
+    https://www.geeksforgeeks.org/problems/count-pairs-whose-sum-is-equal-to-x/1
+
+
+}
+
+SOLUTION :-
+
+//{ Driver Code Starts
+    import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Scanner;
+    
+    class Node {
+        int data;
+        Node next;
+    
+        Node(int key) {
+            data = key;
+            next = null;
+        }
+    }
+    
+    class count_pairs {
+    
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+            int t = sc.nextInt();
+    
+            while (t-- > 0) {
+                int n1 = sc.nextInt();
+                Integer arr1[] = new Integer[n1];
+    
+                for (int i = 0; i < n1; i++) arr1[i] = sc.nextInt();
+    
+                int n2 = sc.nextInt();
+                Integer arr2[] = new Integer[n2];
+    
+                for (int i = 0; i < n2; i++) arr2[i] = sc.nextInt();
+    
+                LinkedList<Integer> head1 = new LinkedList<>(Arrays.asList(arr1));
+                LinkedList<Integer> head2 = new LinkedList<>(Arrays.asList(arr2));
+    
+                int x = sc.nextInt();
+                Solution gfg = new Solution();
+                System.out.println(gfg.countPairs(head1, head2, x));
+            }
+        }
+    }
+    // } Driver Code Ends
+    
+    
+    // your task is to complete this function
+    
+    /*
+    class Node
+    {
+        int data;
+        Node next;
+    
+        Node(int key)
+        {
+            data = key;
+            next = null;
+        }
+    }
+    */
+    
+    class Solution {
+    
+        public static int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2,
+                              int x) {
+            // add your code here
+            Map<Integer,Integer> map = new HashMap<>();
+            
+            for(int i : head1)
+            {
+                map.put(i,1);
+            }
+            int count = 0;
+            for(int j : head2)
+            {
+                if(map.containsKey(x-j))
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+    
